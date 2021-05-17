@@ -28,7 +28,7 @@ router.setState = function(state, backButt) {
   const title = document.querySelector("h1");
   const body = document.querySelector('body');
 
-  if(state.state == 'home') {
+  if(state.name == 'home') {
     title.innerHTML = 'Journal Entries';
     body.className = 'home';
 
@@ -36,7 +36,7 @@ router.setState = function(state, backButt) {
       history.pushState(state, 'Journal Entries', ''); //push state & change URL
     }
   }
-  else if (state.state == 'settings') {
+  else if (state.name == 'settings') {
     title.innerHTML = 'Settings';
     body.className = 'settings';
 
@@ -44,12 +44,12 @@ router.setState = function(state, backButt) {
       history.pushState(state, 'Settings', '#settings'); //push state & change URL
     }
   }
-  else if (state.state == 'entry'){
+  else if (state.name == 'entry'){
     title.innerHTML = 'Entry ' + state.id;
     body.className = 'single-entry';
+    body.removeChild(document.getElementsByTagName('entry-page')[0]);
     const ent = document.createElement('entry-page');
     ent.entry = document.getElementById(state.id).entry;
-    body.removeChild(document.getElementsByTagName('entry-page')[0]);
     body.appendChild(ent);
 
     if(!backButt) {
