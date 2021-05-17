@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.querySelector('img').addEventListener('click', () => {
-  setState({state: 'settings'}, true);
+  setState({state: 'settings', title: 'Settings', url: '#settings'}, true);
 })
 
 document.querySelector('h1').addEventListener('click', () => {
-  setState({state: 'home'}, true);
+  setState({state: 'home', title: 'Journal Entries', url: ''}, true);
 })
 
 window.addEventListener('popstate', (event) => {
