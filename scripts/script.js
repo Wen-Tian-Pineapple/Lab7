@@ -24,13 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.querySelector('img').addEventListener('click', () => {
-  setState({state: 'settings'}, false);
+  setState({state: 'settings'}, true);
 })
 
 document.querySelector('h1').addEventListener('click', () => {
-  setState({state: 'home'}, false);
+  setState({state: 'home'}, true);
 })
 
 window.addEventListener('popstate', (event) => {
-  setState(event.state, true);
+  setState(event.state, false);
 });
