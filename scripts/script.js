@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch('https://cse110lab6.herokuapp.com/entries')
     .then(response => response.json())
     .then(entries => {
-      setState({name: 'home'}, false);
       entries.forEach(entry => {
         let newPost = document.createElement('journal-entry');
         newPost.entry = entry;
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 });
-
+setState({name: 'home'}, false);
 document.querySelector('img').addEventListener('click', () => {
   setState({name: 'settings'}, false);
 })
@@ -44,4 +43,3 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
-
