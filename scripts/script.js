@@ -24,15 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.querySelector('img').addEventListener('click', () => {
-  if(location.hash != '#settings'){
-    setState({state: 'settings'}, false);
-  }
+  setState({state: 'settings'}, false);
 })
 
 document.querySelector('h1').addEventListener('click', () => {
-  if(location.hash != ''){
-    setState({state: 'home'}, false);
-  }
+  setState({state: 'home'}, false);
 })
 
 window.addEventListener('popstate', (event) => {
