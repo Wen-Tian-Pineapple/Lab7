@@ -19,18 +19,26 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         document.querySelector('main').appendChild(newPost);
       });
+      document.querySelector('img').addEventListener('click', () => {
+        setState({state: 'settings', title: 'Settings', id: -1});
+      })
+      
+      document.querySelector('h1').addEventListener('click', () => {
+        setState({state: 'home', title: 'Journal Entries', id: 0});
+      })
     });
 });
 
-
-document.querySelector('img').addEventListener('click', () => {
-  setState({state: 'settings', title: 'Settings', url: '#settings'}, true);
-})
-
-document.querySelector('h1').addEventListener('click', () => {
-  setState({state: 'home', title: 'Journal Entries', url: ''}, true);
-})
-
 window.addEventListener('popstate', (event) => {
-  setState(history.state, false);
+  setState(event.state);
 });
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./sw.js').then(function(registration) {
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
