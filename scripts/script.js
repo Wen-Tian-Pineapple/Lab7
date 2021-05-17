@@ -1,8 +1,8 @@
 // script.js
-
+/* eslint-disable */
 import { router } from './router.js'; // Router imported so you can use it to manipulate your SPA app here
 const setState = router.setState;
-
+let id = 0;
 // Make sure you register your service worker here too
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,7 +12,29 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         let newPost = document.createElement('journal-entry');
         newPost.entry = entry;
+        newPost.id = id;
+        id += 1;
+        newPost.addEventListener('click', () => {
+          setState({state: 'entry', id: newPost.id})
+        })
         document.querySelector('main').appendChild(newPost);
       });
     });
+});
+
+
+document.querySelector('img').addEventListener('click', () => {
+  if(location.hash != '#settings'){
+    setState({state: 'settings'}, false);
+  }
+})
+
+document.querySelector('h1').addEventListener('click', () => {
+  if(location.hash != ''){
+    setState({state: 'home'}, false);
+  }
+})
+
+window.addEventListener('popstate', (event) => {
+  setState(event.state, true);
 });
