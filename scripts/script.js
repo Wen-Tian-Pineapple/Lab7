@@ -32,5 +32,5 @@ document.querySelector('h1').addEventListener('click', () => {
 })
 
 window.addEventListener('popstate', (event) => {
-  setState(event.state, false);
+  setState(history.state, false);
 });
