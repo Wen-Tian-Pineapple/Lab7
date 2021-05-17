@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         newPost.id = id;
         id += 1;
         newPost.addEventListener('click', () => {
-          setState({state: 'entry', id: newPost.id}, false);
+          setState({name: 'entry', id: newPost.id}, false);
         })
         document.querySelector('main').appendChild(newPost);
       });
@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.querySelector('img').addEventListener('click', () => {
-  setState({state: 'settings', title: 'Settings', url: '#settings'}, false);
+  setState({name: 'settings'}, false);
 })
 
 document.querySelector('h1').addEventListener('click', () => {
-  setState({state: 'home', title: 'Journal Entries', url: ''}), false;
+  setState({name: 'home'}), false;
 })
 
 window.addEventListener('popstate', (event) => {
